@@ -1,3 +1,3 @@
 <template>
-  <NxWelcome title="@org/nuxt" />
+  <NxWelcome title="Jiqso" />
 </template>

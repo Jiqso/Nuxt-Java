@@ -1,0 +1,31 @@
+services:
+  spring-boot:
+    build:
+      context: apps/spring-boot
+      dockerfile: Dockerfile
+    ports:
+      - '8080:8080'
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'wget -qO- http://localhost:8080/actuator/health || exit 1',
+        ]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  nuxt:
+    build:
+      # Context MUST be the monorepo root – the root package.json contains
+      # all dependencies (nuxt, vite, @nx/*). The nuxt app package.json is empty.
+      context: .
+      dockerfile: apps/nuxt/Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      # Exposes the Spring Boot API URL to the Nuxt front-end at runtime
+      - NUXT_PUBLIC_API_BASE=http://spring-boot:8080
+    depends_on:
+      - spring-boot

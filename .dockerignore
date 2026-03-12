@@ -1,0 +1,25 @@
+# Node
+node_modules
+npm-debug.log*
+
+# Nx cache
+.nx
+
+# Git
+.git
+.gitignore
+
+# Nuxt build artefacts (will be rebuilt inside Docker)
+apps/nuxt/.nuxt
+apps/nuxt/.output
+apps/nuxt/node_modules
+
+# Spring Boot build artefacts (will be rebuilt inside Docker via Maven)
+apps/spring-boot/target
+
+# E2E tests – not needed in any Docker image
+apps/nuxt-e2e
+
+# Misc
+dist
+*.md
