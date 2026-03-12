@@ -1,44 +1,56 @@
-<script setup lang="ts"></script>
+
+<script setup lang="ts">
+</script>
 
 <template>
   <main>
-    <header>
-      <nav>
-        <NuxtLink to="/"> Home </NuxtLink>
-        <NuxtLink to="/about"> About </NuxtLink>
-      </nav>
-    </header>
-    <nuxt-page />
+    <div class="layout">
+        <header class="layout-header">
+          <NuxtLink to="/"> Home </NuxtLink>
+          <NuxtLink to="/about"> About </NuxtLink>
+        </header>
+        
+        <main class="layout-main">
+          <nuxt-page />
+        </main>
+        
+        <footer class="layout-footer">
+            <p>&copy; 2024 My App</p>
+        </footer>
+    </div>
   </main>
 </template>
 
-<style scoped lang="css">
-header {
-  line-height: 1.5;
-  max-width: 100vw;
-}
+<style scoped>
+    .layout {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
 
-nav > a {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
+    .layout-header {
+        background-color: #333;
+        color: white;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        gap:2rem;
+        height:50px;
+        
+    }
 
-@media (min-width: 768px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 768px;
-  }
+    .layout-main {
+        flex: 1;
+        padding: 2rem;
+    }
 
-  nav {
-    text-align: left;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
+    .layout-footer {
+        background-color: #f0f0f0;
+        height:50px;
+        display:flex;
+        justify-content:center;
+        align-items: center;
+        border-top: 1px solid #ddd;
+    }
 </style>

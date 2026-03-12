@@ -1,3 +1,3 @@
 <template>
-  <NxWelcome title="Jiqso" />
+  <ShoppingList />
 </template>
